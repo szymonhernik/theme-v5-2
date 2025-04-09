@@ -86,6 +86,14 @@
 
 	var studyDetailIsShown{{ study-technique-id }} = 0;
 
+	// Function to close this specific section
+	function closeSection{{ study-technique-id }}() {
+		studyDetailIsShown{{ study-technique-id }} = 0;
+		studyDetail{{ study-technique-id }}.style.height = "0px";
+		studyPlusCross{{ study-technique-id }}.innerHTML = "+";
+		studyExpandButton{{ study-technique-id }}.style.color = studyReturnColor{{ study-technique-id }};
+		ytVideo{{ study-technique-id }}.src = '';
+	}
 
 	studyExpandButton{{ study-technique-id }}.addEventListener("click", function() {
     	if(studyDetailIsShown{{ study-technique-id }} === 0) {
@@ -111,11 +119,7 @@
 				});
 			}, 100);
     	} else {
-    		studyDetailIsShown{{ study-technique-id }} = 0;
-		studyDetail{{ study-technique-id }}.style.height = "0px";
-		studyPlusCross{{ study-technique-id }}.innerHTML = "+"
-		studyExpandButton{{ study-technique-id }}.style.color = studyReturnColor{{ study-technique-id }}
-		ytVideo{{ study-technique-id }}.src = '';
+    		closeSection{{ study-technique-id }}();
     	}
     });
 
